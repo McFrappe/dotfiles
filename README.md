@@ -23,4 +23,4 @@
 ![ConfNvimDarkmode](.dotfiles/images/ConfNvimDarkmode.png)
 ![DarkmodeTerminal](.dotfiles/images/DarkmodeTerminal.png)
 ![LightmodeTerminal](.dotfiles/images/LightmodeTerminal.png)
-![WezTerm Fullscreen](.dotfiles/images/wezfullscreen.png)
+![WezTermFullscreen](.dotfiles/images/wezfullscreen.png)
