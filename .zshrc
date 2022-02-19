@@ -1,12 +1,22 @@
-source $HOME/.aliases
+# source $HOME/.aliases
+
+# load seperated config files
+for conf in "$HOME/.config/zsh/"*.zsh; do
+    source ${conf}
+
+    if [ $? -ne 0 ]; then 
+        echo "! Failed to source ${conf}.\nReturn code was $?"
+        break
+    fi
+
+    echo "> Sourced ${conf} successfully."
+done
+unset conf
 
 export VISUAL=nvim;
 export EDITOR=nvim;
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 export LANG=en_US.UTF-8
-
-open_by_browser(){ open -a $1 $2}
-alias firefox='open_by_browser firefox'
 
 # zmodload zsh/zle
 zmodload zsh/complist
@@ -82,4 +92,3 @@ runworkspaces () {
     tmux -2 split-window -v
     tmux -2 -2 attach-session -d 
 }
-
