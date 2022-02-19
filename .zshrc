@@ -1,4 +1,4 @@
-source .aliases
+source $HOME/.aliases
 
 export VISUAL=nvim;
 export EDITOR=nvim;

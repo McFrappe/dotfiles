@@ -18,7 +18,8 @@
 
 ## Screenshots
 
-![]()
-![]()
-![]()
-![]()
+![CDarkmodeNvim](images/CDarkmodeNvim.png)
+![CLightmodeNvim](images/CLightmodeNvim.png)
+![ConfNvimDarkmode](images/ConfNvimDarkmode.png)
+![DarkmodeTerminal](images/DarkmodeTerminal.png)
+![LightmodeTerminal](images/LightmodeTerminal.png)
