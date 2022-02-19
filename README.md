@@ -18,8 +18,9 @@
 
 ## Screenshots
 
-![CDarkmodeNvim]($HOME/.dotfiles/images/CDarkmodeNvim.png)
-![CLightmodeNvim]($HOME/.dotfiles/images/CLightmodeNvim.png)
-![ConfNvimDarkmode]($HOME/.dotfiles/images/ConfNvimDarkmode.png)
-![DarkmodeTerminal]($HOME/.dotfiles/images/DarkmodeTerminal.png)
-![LightmodeTerminal]($HOME/.dotfiles/images/LightmodeTerminal.png)
+![CDarkmodeNvim](.dotfiles/images/CDarkmodeNvim.png)
+![CLightmodeNvim](.dotfiles/images/CLightmodeNvim.png)
+![ConfNvimDarkmode](.dotfiles/images/ConfNvimDarkmode.png)
+![DarkmodeTerminal](.dotfiles/images/DarkmodeTerminal.png)
+![LightmodeTerminal](.dotfiles/images/LightmodeTerminal.png)
+![WezTerm Fullscreen](.dotfiles/images/wezfullscreen.png)
