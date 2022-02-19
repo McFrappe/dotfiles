@@ -1,3 +1,5 @@
+source .aliases
+
 export VISUAL=nvim;
 export EDITOR=nvim;
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
