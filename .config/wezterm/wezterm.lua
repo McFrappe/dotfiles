@@ -95,8 +95,8 @@ return {
     window_background_opacity = 0.95,
     -- text_background_opacity = 0.5,
     use_fancy_tab_bar = false,
-    initial_cols = 110,
-    initial_rows = 24,
+    initial_cols = 80,
+    initial_rows = 16,
     exit_behavior = "Close",
     colors = {
         tab_bar = {
@@ -110,7 +110,7 @@ return {
         "Menlo", -- This has the check mark and cross symbols
         "Apple Color Emoji" -- I prefer apple emoji to google emoji
     }, {weight="Medium"}),
-    font_size = 16,
+    font_size = 11,
     -- misc
     launch_menu = {
         {
