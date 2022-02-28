@@ -26,6 +26,7 @@ Plug 'inside/vim-search-pulse'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'zivyangll/git-blame.vim'
 Plug 'takac/vim-hardtime'
+Plug 'bignimbus/you-are-here.vim'
 
 " Syntax
 Plug 'maxmellon/vim-jsx-pretty'
@@ -277,3 +278,8 @@ endfunction
 nnoremap <C-o><C-d> :OmniSharpGotoDefinition<CR>
 nnoremap <C-o><C-d><C-p> :OmniSharpPreviewDefinition<CR>
 nnoremap <C-o><C-r> :!dotnet run
+
+" You are here config
+" nnoremap <silent> <leader>here :call you_are_here#Toggle()<CR>
+" nnoremap <silent> <leader>here :call you_are_here#ToggleFor(2500)<CR>
+
