@@ -13,8 +13,11 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'haystackandroid/snow'
 Plug 'Luxed/ayu-vim'
 Plug 'severij/vadelma'
+
+Plug 'chriskempson/base16-vim'
+Plug 'daviesjamie/vim-base16-lightline'
+
 Plug 'Rigellute/shades-of-purple.vim'
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'tribela/vim-transparent'
 
 " Extentions
@@ -42,12 +45,12 @@ function! SetBackgroundMode(...)
 
     if s:mode ==? "Dark"
         let g:new_bg = "dark"
-        colorscheme onehalfdark " Set your theme here
+        colorscheme base16-tomorrow-night-eighties " Set your theme here
     endif
 
     if &background !=? g:new_bg
         let &background = g:new_bg
-        colorscheme onehalflight " Set your theme here
+        colorscheme base16-cupcake " Set your theme here
     endif
 
     hi Normal guibg=NONE ctermbg=NONE
@@ -151,7 +154,7 @@ let g:SuperTabCrMapping = 1
 set laststatus=2
 let g:shades_of_purple_lightline = 1
 let g:lightline = {
-            \ 'colorscheme': 'onehalfdark',
+            \ 'colorscheme': 'base16',
             \ 'ctive': { 
                 \ 'left': [ [ 'mode', 'paste'], 
                 \ [ 'readonly', 'relativepath', 'tagbar', 'modified']

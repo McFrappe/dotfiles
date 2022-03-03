@@ -3,14 +3,14 @@ local Current_appearance = true;
 
 local function scheme_for_appearance(appearance)
     if appearance:find("Dark") then
-        return "OneHalfDark"
+        return "Jellybeans"
     end
 
-    return  "OneHalfLight"
+    return  "Github"
 end
 
 local function tabbarTheme()
-    if Current_appearance then
+    if Current_appearance then -- if its dark
         return "#282828";
     end
 
@@ -96,7 +96,7 @@ return {
     -- text_background_opacity = 0.5,
     use_fancy_tab_bar = false,
     initial_cols = 80,
-    initial_rows = 16,
+    initial_rows = 24,
     exit_behavior = "Close",
     colors = {
         tab_bar = {
@@ -106,11 +106,12 @@ return {
 
     -- Theming, fonts and colors
     font = wezterm.font_with_fallback({
-        "JetBrains Mono", -- The main font I want to use
+        "Monaco", -- The main font I want to use
         "Menlo", -- This has the check mark and cross symbols
         "Apple Color Emoji" -- I prefer apple emoji to google emoji
     }, {weight="Medium"}),
-    font_size = 11,
+    font_size = 10,
+    bold_brightness_ansi_colors = true,
     -- misc
     launch_menu = {
         {
