@@ -45,7 +45,7 @@ function! SetBackgroundMode(...)
 
     if s:mode ==? "Dark"
         let g:new_bg = "dark"
-        colorscheme base16-tomorrow-night-eighties " Set your theme here
+        colorscheme base16-eighties " Set your theme here
     endif
 
     if &background !=? g:new_bg
