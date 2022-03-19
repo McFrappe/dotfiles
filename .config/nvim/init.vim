@@ -13,23 +13,18 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'haystackandroid/snow'
 Plug 'Luxed/ayu-vim'
 Plug 'severij/vadelma'
-
 Plug 'chriskempson/base16-vim'
 Plug 'daviesjamie/vim-base16-lightline'
-
 Plug 'Rigellute/shades-of-purple.vim'
 Plug 'tribela/vim-transparent'
 
 " Extentions
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 Plug 'lervag/vimtex'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'inside/vim-search-pulse'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'zivyangll/git-blame.vim'
 Plug 'takac/vim-hardtime'
-Plug 'bignimbus/you-are-here.vim'
 
 " Syntax
 Plug 'maxmellon/vim-jsx-pretty'

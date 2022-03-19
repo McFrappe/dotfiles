@@ -110,7 +110,7 @@ return {
         "Menlo", -- This has the check mark and cross symbols
         "Apple Color Emoji" -- I prefer apple emoji to google emoji
     }, {weight="Medium"}),
-    font_size = 10,
+    font_size = 11,
     bold_brightness_ansi_colors = true,
     -- misc
     launch_menu = {
