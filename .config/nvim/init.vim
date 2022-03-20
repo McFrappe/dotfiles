@@ -40,7 +40,7 @@ function! SetBackgroundMode(...)
 
     if s:mode ==? "Dark"
         let g:new_bg = "dark"
-        colorscheme base16-eighties " Set your theme here
+        colorscheme shades_of_purple " Set your theme here
     endif
 
     if &background !=? g:new_bg
@@ -48,11 +48,11 @@ function! SetBackgroundMode(...)
         colorscheme base16-cupcake " Set your theme here
     endif
 
-    hi Normal guibg=NONE ctermbg=NONE
+    " hi Normal guibg=NONE ctermbg=NONE
 endfunction
 syntax enable
 call SetBackgroundMode()
-call timer_start(10000,"SetBackgroundMode", {"repeat": -1})
+" call timer_start(10000,"SetBackgroundMode", {"repeat": -1})
 
 " vim hardtime
 let g:hardtime_default_on = 1
@@ -83,8 +83,6 @@ set updatetime=300
 set cmdheight=1
 set shortmess+=c
 
-set signcolumn=yes
-
 " Prevent from showing what mode is active (because lightline is active)
 " if get(g:, 'loaded_lightline', 0)
 "     echomsg "Loaded lightline, disabling 'showmode'"
@@ -107,11 +105,11 @@ set noswapfile
 set shiftwidth=4
 set expandtab
 set encoding=utf-8
-set number
+set relativenumber
 set go=a
 set nohlsearch
 set clipboard=unnamedplus
-set termguicolors
+" set termguicolors
 
 " Settings for viewing the active window
 set colorcolumn=80
@@ -149,7 +147,7 @@ let g:SuperTabCrMapping = 1
 set laststatus=2
 let g:shades_of_purple_lightline = 1
 let g:lightline = {
-            \ 'colorscheme': 'base16',
+            \ 'colorscheme': 'shades_of_purple',
             \ 'ctive': { 
                 \ 'left': [ [ 'mode', 'paste'], 
                 \ [ 'readonly', 'relativepath', 'tagbar', 'modified']
@@ -276,8 +274,3 @@ endfunction
 nnoremap <C-o><C-d> :OmniSharpGotoDefinition<CR>
 nnoremap <C-o><C-d><C-p> :OmniSharpPreviewDefinition<CR>
 nnoremap <C-o><C-r> :!dotnet run
-
-" You are here config
-" nnoremap <silent> <leader>here :call you_are_here#Toggle()<CR>
-" nnoremap <silent> <leader>here :call you_are_here#ToggleFor(2500)<CR>
-

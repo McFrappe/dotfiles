@@ -92,7 +92,7 @@ return {
     pane_focus_follows_mouse = true,
     swallow_mouse_click_on_pane_focus = false,
     adjust_window_size_when_changing_font_size = false,
-    window_background_opacity = 0.95,
+    -- window_background_opacity = 0.95,
     -- text_background_opacity = 0.5,
     use_fancy_tab_bar = false,
     initial_cols = 80,
@@ -105,13 +105,12 @@ return {
     },
 
     -- Theming, fonts and colors
-    font = wezterm.font_with_fallback({
-        "Monaco", -- The main font I want to use
-        "Menlo", -- This has the check mark and cross symbols
-        "Apple Color Emoji" -- I prefer apple emoji to google emoji
-    }, {weight="Medium"}),
-    font_size = 11,
-    bold_brightness_ansi_colors = true,
+  font = wezterm.font_with_fallback({
+      -- disable ligatures for Monaco as it has a `fi` ligature that doesn't look great
+      {family="Monaco", harfbuzz_features={"kern", "clig", "liga=0"}},
+      "Menlo",
+      "Apple Color Emoji"
+    }, {weight="Regular"}),    font_size = 11,
     -- misc
     launch_menu = {
         {
