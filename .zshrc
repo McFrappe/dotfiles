@@ -7,6 +7,7 @@ for conf in "$HOME/.config/zsh/"*.zsh; do
         continue
     fi
 
-    echo "> Sourced ${conf} ${grn}successfully${end}."
+    echo "> Sourced ${conf} ${grn}successfully${end}. Return Code: $?."
 done
+
 unset conf
