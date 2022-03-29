@@ -69,7 +69,7 @@ wezterm.on("format-tab-title", function(tab)
         fg_color = "white"
 
         if tab.is_active then
-            bg_color = "#61afef";
+            bg_color = "#e27373";
         end
     else
         bg_color = "#dcdfe4"
@@ -92,10 +92,10 @@ return {
     pane_focus_follows_mouse = true,
     swallow_mouse_click_on_pane_focus = false,
     adjust_window_size_when_changing_font_size = false,
-    -- window_background_opacity = 0.95,
+    -- window_background_opacity = 0.8,
     -- text_background_opacity = 0.5,
     use_fancy_tab_bar = false,
-    initial_cols = 80,
+    initial_cols = 90,
     initial_rows = 24,
     exit_behavior = "Close",
     colors = {

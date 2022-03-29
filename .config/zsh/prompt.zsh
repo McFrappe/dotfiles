@@ -41,6 +41,6 @@ else
 fi
 
 # basic prompt on the left
-PROMPT='%{$fg[white]%}%~% %(?.%{ $fg[green]%}.%{$fg[red]%})%B$%b '
+PROMPT="%n@%m[%1~]: "
 
 COLORTERM="truecolor"

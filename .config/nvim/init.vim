@@ -5,7 +5,7 @@ Plug 'anyakichi/vim-surround'
 Plug 'folke/zen-mode.nvim'
 
 " Misc
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
 Plug 'chrisbra/colorizer'
 
 " Themes
@@ -40,7 +40,7 @@ function! SetBackgroundMode(...)
 
     if s:mode ==? "Dark"
         let g:new_bg = "dark"
-        colorscheme shades_of_purple " Set your theme here
+        colorscheme 256_noir " Set your theme here
     endif
 
     if &background !=? g:new_bg
@@ -53,6 +53,12 @@ endfunction
 syntax enable
 call SetBackgroundMode()
 " call timer_start(10000,"SetBackgroundMode", {"repeat": -1})
+
+" Change highlighting of cursor line when entering/leaving Insert Mode
+set cursorline
+highlight CursorLine cterm=NONE ctermfg=NONE ctermbg=233 guifg=NONE guibg=#121212
+autocmd InsertEnter * highlight CursorLine cterm=NONE ctermfg=NONE ctermbg=234 guifg=NONE guibg=#1c1c1c
+autocmd InsertLeave * highlight CursorLine cterm=NONE ctermfg=NONE ctermbg=233 guifg=NONE guibg=#121212
 
 " vim hardtime
 let g:hardtime_default_on = 1
@@ -143,24 +149,24 @@ set wildmode=longest,list,full
 map <leader>o :setlocal spell! spelllang=en_us<CR>
 
 " Lightline configuration
-let g:SuperTabCrMapping = 1
-set laststatus=2
-let g:shades_of_purple_lightline = 1
-let g:lightline = {
-            \ 'colorscheme': 'shades_of_purple',
-            \ 'ctive': { 
-                \ 'left': [ [ 'mode', 'paste'], 
-                \ [ 'readonly', 'relativepath', 'tagbar', 'modified']
-                \ ],
-                \ },
-                \ }
+" let g:SuperTabCrMapping = 1
+" set laststatus=2
+" let g:shades_of_purple_lightline = 1
+" let g:lightline = {
+"             \ 'colorscheme': '256_noir',
+"             \ 'ctive': { 
+"                 \ 'left': [ [ 'mode', 'paste'], 
+"                 \ [ 'readonly', 'absolutepath', 'tagbar', 'modified']
+"                 \ ],
+"                 \ },
+"                 \ }
 
-function! LightlineFilename()
-    return &filetype ==# 'vimfiler' ? vimfiler#get_status_string() :
-                \ &filetype ==# 'unite' ? unite#get_status_string() :
-                \ &filetype ==# 'vimshell' ? vimshell#get_status_string() :
-                \ expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
-endfunction
+" function! LightlineFilename()
+"     return &filetype ==# 'vimfiler' ? vimfiler#get_status_string() :
+"                 \ &filetype ==# 'unite' ? unite#get_status_string() :
+"                 \ &filetype ==# 'vimshell' ? vimshell#get_status_string() :
+"                 \ expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+" endfunction
 
 if !has('gui_running')
     set t_Co=256
