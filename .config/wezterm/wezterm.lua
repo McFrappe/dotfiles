@@ -69,7 +69,7 @@ wezterm.on("format-tab-title", function(tab)
         fg_color = "white"
 
         if tab.is_active then
-            bg_color = "#e27373";
+            bg_color = "#5cd0f6";
         end
     else
         bg_color = "#dcdfe4"
