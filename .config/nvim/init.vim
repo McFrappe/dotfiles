@@ -1,234 +1,63 @@
 call plug#begin('~/.config/nvim/plugged')
-" Position and commenting
+" syntax handling
 Plug 'tpope/vim-commentary'
-Plug 'anyakichi/vim-surround' 
+Plug 'anyakichi/vim-surround'
 Plug 'folke/zen-mode.nvim'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'beyondmarc/hlsl.vim'
 
 " Misc
 Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
 Plug 'chrisbra/colorizer'
 
 " Themes
 Plug 'nanotech/jellybeans.vim'
-Plug 'haystackandroid/snow'
-Plug 'Luxed/ayu-vim'
-Plug 'severij/vadelma'
-Plug 'chriskempson/base16-vim'
-Plug 'daviesjamie/vim-base16-lightline'
-Plug 'mannix/lightline-lucius'
-Plug 'Rigellute/shades-of-purple.vim'
-Plug 'tribela/vim-transparent'
-Plug 'jonathanfilip/vim-lucius'
+Plug 'morhetz/gruvbox'
+" Plug 'L-TChen/auto-dark-mode.vim'
 
 " Extentions
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'lervag/vimtex'
-Plug 'OmniSharp/omnisharp-vim'
-Plug 'inside/vim-search-pulse'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'takac/vim-hardtime'
+Plug 'sheerun/vim-polyglot'
 
-" Syntax
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'darfink/vim-plist'
 call plug#end()
 
-" Theming
-function! SetBackgroundMode(...)
-    let g:new_bg = "light"
-    let s:mode = systemlist("defaults read -g AppleInterfaceStyle")[0]
+let g:airline_theme='gruvbox'
+let g:gruvbox_italic=1
+let g:gruvbox_contrast_dark='hard'
+colorscheme gruvbox
 
-    if s:mode ==? "Dark"
-        let g:new_bg = "dark"
-        colorscheme lucius " Set your theme here
-    endif
-
-    if &background !=? g:new_bg
-        let &background = g:new_bg
-        colorscheme lucius " Set your theme here
-    endif
-
-    " hi Normal guibg=NONE ctermbg=NONE
-endfunction
-syntax enable
-call SetBackgroundMode()
-call timer_start(10000,"SetBackgroundMode", {"repeat": -1})
-
-" Change highlighting of cursor line when entering/leaving Insert Mode
-set cursorline
-" highlight CursorLine cterm=NONE ctermfg=NONE ctermbg=233 guifg=NONE guibg=#121212
-" autocmd InsertEnter * highlight CursorLine cterm=NONE ctermfg=NONE ctermbg=234 guifg=NONE guibg=#1c1c1c
-" autocmd InsertLeave * highlight CursorLine cterm=NONE ctermfg=NONE ctermbg=233 guifg=NONE guibg=#121212
-
-" vim hardtime
-let g:hardtime_default_on = 1
-let g:list_of_normal_keys = ["h", "l", "-", "+", "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
-let g:list_of_visual_keys = ["-", "+", "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
+filetype plugin on " Auto-detect un-labeled filetypes
+set number relativenumber " Show relative line numbers on the left. These change based upon where your cursor is.
+syntax on " Turn syntax highlighting on
+set ai " Sets auto-indentation
+set noswapfile " Prevent vim from creating .swp files
+set cursorline " Highlight current cursor line
+set cursorcolumn " Highlight current cursor column
+set hlsearch " When searching (/), highlights matches as you go
+set incsearch " When searching (/), display results as you type (instead of only upon ENTER)
+set ttyfast " Boost speed by altering character redraw rates to your terminal
+set showmatch " Show matching brackets when text indicator is over them
+set numberwidth=3 " Sets width of the 'gutter' column used for numbering to 3 (default 4)
+set clipboard=unnamedplus " Use the OS clipboard by default
+set spell
 
 let mapleader=","
-
-set noerrorbells
-filetype plugin on
-filetype plugin indent on
-autocmd FileType org setlocal foldmethod=syntax
-
-" auto + smart indent for code
-set autoindent
-set smartindent
-
-" Mouse support (why not right? sometimes im lazy)
-set mouse=a
-
-" Disable file backups
-set nobackup
-set nowritebackup
-
-" no delays!
-set updatetime=300
-
-set cmdheight=1
-set shortmess+=c
-
-" Prevent from showing what mode is active (because lightline is active)
-" if get(g:, 'loaded_lightline', 0)
-"     echomsg "Loaded lightline, disabling 'showmode'"
-"     set noshowmode
-" else
-"     echomsg "Lightline not loaded, turning on 'showmode'"
-"     set showmode
-" endif
-set noshowmode
-
-" Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-set hidden
-set undofile
-set incsearch
-set tabstop=4
-set nowrap
-set noswapfile
-set shiftwidth=4
-set expandtab
-set encoding=utf-8
-set relativenumber
-set go=a
-set nohlsearch
-set clipboard=unnamedplus
-" set termguicolors
-
-" Settings for viewing the active window
-set colorcolumn=80
-" Specific length for different filetypes
-" autocmd FileType javascript setlocal colorcolumn=120
-" autocmd FileType typescript setlocal colorcolumn=120
-
-" Logic for entering/leaving a pane
-function! OnWinEnter()
-    if exists('w:initial_cc')
-        let &colorcolumn = w:initial_cc
-    endif
-endfunction
-function! OnWinLeave()
-    if !exists('w:initial_cc')
-        let w:initial_cc=&colorcolumn
-    endif
-    let &colorcolumn = 0
-endfunction
-
-augroup BgHighlight
-    autocmd!
-    autocmd WinEnter * call OnWinEnter()
-    autocmd WinLeave * call OnWinLeave()
-augroup END
-
-" Enable autocompletion:
-set wildmode=longest,list,full
-
-" Spell-check set to <leader>o, 'o' for 'orthography':
-map <leader>o :setlocal spell! spelllang=en_us<CR>
-
-" Lightline configuration
-let g:SuperTabCrMapping = 1
-set laststatus=2
-let g:shades_of_purple_lightline = 1
-let g:lightline = {
-            \ 'colorscheme': 'lucius',
-            \ 'ctive': { 
-                \ 'left': [ [ 'mode', 'paste'], 
-                \ [ 'readonly', 'absolutepath', 'tagbar', 'modified']
-                \ ],
-                \ },
-                \ }
-
-function! LightlineFilename()
-    return &filetype ==# 'vimfiler' ? vimfiler#get_status_string() :
-                \ &filetype ==# 'unite' ? unite#get_status_string() :
-                \ &filetype ==# 'vimshell' ? vimshell#get_status_string() :
-                \ expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
-endfunction
-
-if !has('gui_running')
-    set t_Co=256
-endif
-" MISC ##########################################################
-set t_Co=256
-
-" Replace all occurences of word under cursor
-nnoremap <leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 " Replace all is aliased to S.
 nnoremap S :%s//g<Left><Left>
 
-let g:coc_snippet_next = '<S-Tab>'
-
-" Esc when in terminal mode
-tnoremap <Esc> <C-\><C-n>:q!<CR>
-
-" C.O.C 
-" Tab Completion
-inoremap <silent><expr> <TAB>
-            \ pumvisible() ? "\<C-n>" :
-            \ <SID>check_back_space() ? "\<TAB>" :
-            \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion. COC
-if has('nvim')
-    inoremap <silent><expr> <c-space> coc#refresh()
-else
-    inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
 " Use D to show documentation in preview window.
 nnoremap <silent> <leader>d :call <SID>show_documentation()<CR>
 
-function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
-        execute 'h '.expand('<cword>')
-    else
-        call CocAction('doHover')
-    endif
-endfunction
-
-" Wrapping around the column 80
-autocmd FileType tex setlocal formatoptions+=l tw=80
-autocmd FileType markdown setlocal formatoptions+=l tw=80
-autocmd FileType text setlocal formatoptions+=l tw=80
-
 " fzf
-nnoremap <silent> <leader>o :GFiles<CR>
-
-" Open in new tab by default
+nnoremap <silent> <leader>o :Files<CR>
 let g:fzf_action = { 'enter': 'tab split' }
-let g:fzf_layout = { 'down': '40%' }
-
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.75, 'relative': v:true } }
 let g:fzf_colors =
             \ { 'fg':      ['fg', 'Normal'],
             \ 'bg':      ['bg', 'Normal'],
@@ -243,7 +72,7 @@ let g:fzf_colors =
             \ 'marker':  ['fg', 'Keyword'],
             \ 'spinner': ['fg', 'Label'],
             \ 'header':  ['fg', 'Comment'] }
-
+"
 " Vimtex settings
 let g:tex_flavor = 'latex'
 let g:vimtex_view_method = "skim"
@@ -278,7 +107,14 @@ function! UpdateSkim() abort
     call jobstart(l:cmd + [line('.'), l:out, l:src_file_path])
 endfunction
 
-" OmniSharp conf (c#)
-nnoremap <C-o><C-d> :OmniSharpGotoDefinition<CR>
-nnoremap <C-o><C-d><C-p> :OmniSharpPreviewDefinition<CR>
-nnoremap <C-o><C-r> :!dotnet run
+" COC settings
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
